@@ -13,9 +13,9 @@ pageEncoding="ISO-8859-1"%>
 </head>
 <body>
 	<h1 align="center">Manager HomePage</h1>
-	<div class="container">
+	<div class="container-fluid">
 		<p> Welcome Manager ${ loggedEmployee.firstName }</p>
-	</div>
+
 
 	<div class="navbar" class="navbar navbar-light" style="background-color: #e3f2fd;">
 		<div class="navbar-header">
@@ -26,7 +26,7 @@ pageEncoding="ISO-8859-1"%>
 						</span></a></li>
 
 		<li><a id="pendingClick" class="navbar-brand" onclick="return getPenTickets()">View All Pending Reimbursements</a></li>
-				<li><a id="pendingClick" class="navbar-brand" onclick="return getResTickets()">View All Resolved Reimbursements</a></li>
+		<li><a id="pendingClick" class="navbar-brand" onclick="return getResTickets()">View All Resolved Reimbursements</a></li>
 
 			</ul>
 		</div>
@@ -69,7 +69,8 @@ pageEncoding="ISO-8859-1"%>
 		</tbody>
 	</table>
 	
-	<h2>Pending Reimbursements</h2>
+	<!--
+	<h2 align="center">Pending Reimbursements</h2>
 		<table class="table table-striped">
 		<thead>
 			<tr>
@@ -92,17 +93,36 @@ pageEncoding="ISO-8859-1"%>
 					<td> <c:out value="${r.getSubmitTime()}"></c:out></td>
 					<td> <c:out value="${r.getDescription()}"></c:out></td>
 					<td> <c:out value="${r.getCategory()}"></c:out></td>
-					<td><button id="${r.getTicketId()}" type="button" onclick="approve(this.id)"> Approve</button>
-						<button id="${r.getTicketId()}" type="button">Deny</button></td>
+					<td><button id="${r.getTicketId()}" type="button" onclick="approve(this.id); window.location.reload();"> Approve</button>
+						<button id="${r.getTicketId()}" type="button" onclick="deny(this.id); window.location.reload();"> Deny</button></td>
 				</tr>
 			</c:forEach>
-		</tbody>
+		</tbody>2
 	</table>
 
+	  -->
+	
+<br>	
+<form>
+  <div class="form-group row">
+  <div class="col-sm-2">
+    <label for="employeeidreq" class="col-form-label">View Employee Requests By Employee ID</label>
+</div>
+  <div class="col-sm-2">
+      <input type="number" class="form-control" id="employeeidreq" placeholder="Employee ID">
+      </div>
+    
+  <div class="col-sm-8">
+    
+      <button type="button" onclick="getEmployeeID()" class="btn btn-primary">Search</button>
+    </div>
+  </div>
+</form>
 	
 	<h5 id="alltickets"></h5>
 
 
 	<script type="text/javascript" src="resources/js/getAllTickets.js"></script>
+		</div>
 </body>
 </html>
